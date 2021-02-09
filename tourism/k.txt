@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html><head>
+<title>Form project</title></head>
+<style>
+body {
+  background-image: url("cover4.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>
+
+<font face = "chiller" size="5" color="white"><h1 align="center" height="30%">WELC0ME TO TOURISM MANAGEMENT SYSTEM</h1> </font>
+<center>
+
+<form action = "2 touruser.html" style = "margin-top:25%">
+<table>
+ <h2><font face = "times new roman" size="5" color="yellow">LOGIN FORM</font></h2>
+<tr>
+          <td><font size="5" color="white" > UserName:</font></td> 
+          <td><input type="TEXT" name="text" required> </input></td>
+</tr>
+
+ <tr>
+           <td><font size="5" color="white" > Password:</font></td> 
+           <td><input type="password" placeholder="password" required minlength="5" maxlength="10"></td>
+</tr>
+ 
+<div>
+<tr>
+<td><input type="submit" align="center"></tr></td></div>
+
+</table>
+</form>
+</center>
+</body>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+  <script src="javas.js"></script>
+</html>

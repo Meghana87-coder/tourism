@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<legend>
+<FORM METHOD="POST">
+<head>
+<style>
+body  {
+  background-image: url("customer.png");
+  background-attachment:fixed;
+  background-repeat:no-repeat;
+  background-size:50% 90%;
+  background-position:right bottom;
+}
+</style>
+<title>CATERING MANAGEMENT SYSTEM</title>
+</head>
+<fieldset>
+<h3>CUSTOMER DETAILS</h3>
+<body style="font-size: 15px" background-color="#E6E6FA" >
+
+<pre>
+STAFF ID:
+<select name="to_user" class="form-control">
+<option value="pick">please select</option>
+
+<?php
+$conn=mysqli_connect("localhost","root","","catering") or die (mysql_error());
+$sql=mysqli_query($conn,"SELECT staff_id,staff_name FROM staff");
+$row = mysqli_num_rows($sql);
+while($row = mysqli_fetch_array($sql)) {
+echo "<option value = '". $row['staff_id']."'>".$row['staff_name']."</option>";
+}
+?>
+</select>
+<?php
+if(isset($_POST['to_user'])) {
+$x = $_POST["to_user"];
+$_SESSION['staff_id'] = $x;
+}
+?>
+Customer name: <input type="text" name="customer_name" maxlength="20" title="name of max length 20"required>
+Phone number: <input type="tel" name="customer_phone" pattern="[7-9]{1}[0-9]{9}"
+                 title="Phone number with 7-9 and remaing 9 digit with 0-9" required>
+Email: <input type="email" name="customer_email"  title="*****@*****.com" required>
+City: <input type="text" name="customer_address" maxlength="20" title="enter a valid 20 length address"required>
+<input type="submit" value="submit" name="submit">
+</pre>
+</legend>
+</form>
+
+<link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css" />
+  <link href="fiile_nme.css" rel= "stylesheet" type="text/css">
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+  <script src="z.js"></script>
+</body>
+</html>
+
+<html>
+<body>
+<?php
+if(isset($_POST['submit']))
+{
+
+//$s=$_POST['staff_id'];
+$cname=$_POST['customer_name'];
+$cphone=$_POST['customer_phone'];
+$cemail=$_POST['customer_email'];
+$cadd=$_POST['customer_address'];
+
+$query="insert into customer(staff_id,cust_name,phone,email,address) values('$x','$cname','$cphone','$cemail','$cadd')";
+if(mysqli_query($conn,$query))
+{
+echo '<script language="javascript">
+alert("customer details successfully registered");
+location="c6.php";
+</script>';
+}
+}
+?>
+
